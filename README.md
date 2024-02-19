@@ -1,2 +1,3 @@
-# iptvilong
+# iptvi-long
+每天定时抓取直播源，更新央视和地方台
 
