@@ -1,0 +1,69 @@
+#EXTM3U
+#EXTINF:-1 group-title="央视频道-",CCTV-1
+http://27.10.127.139:8000/udp/225.0.4.74:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-2
+http://27.10.127.139:8000/udp/225.0.4.132:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-3
+http://27.10.127.139:8000/udp/225.0.4.142:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-4
+http://27.10.127.139:8000/udp/225.0.4.176:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-5
+http://27.10.127.139:8000/udp/225.0.4.143:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-6
+http://27.10.127.139:8000/udp/225.0.4.144:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-7
+http://27.10.127.139:8000/udp/225.0.4.127:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-8
+http://27.10.127.139:8000/udp/225.0.4.137:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-9
+http://27.10.127.139:8000/udp/225.0.4.131:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-10
+http://27.10.127.139:8000/udp/225.0.4.130:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-11
+http://27.10.127.139:8000/udp/225.0.4.218:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-12
+http://27.10.127.139:8000/udp/225.0.4.129:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-13
+http://27.10.127.139:8000/udp/225.0.4.219:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-14
+http://27.10.127.139:8000/udp/225.0.4.128:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-15
+http://27.10.127.139:8000/udp/225.0.4.220:7980
+#EXTINF:-1 group-title="央视频道-",CCTV-17
+http://27.10.127.139:8000/udp/225.0.4.179:7980
+#EXTINF:-1 group-title="地方卫视",东方卫视
+http://27.10.127.139:8000/udp/225.0.4.80:7980
+#EXTINF:-1 group-title="地方卫视",湖南卫视
+http://27.10.127.139:8000/udp/225.0.4.75:7980
+#EXTINF:-1 group-title="地方卫视",辽宁卫视
+http://27.10.127.139:8000/udp/225.0.4.98:7980
+#EXTINF:-1 group-title="地方卫视",江苏卫视
+http://27.10.127.139:8000/udp/225.0.4.79:7980
+#EXTINF:-1 group-title="地方卫视",江西卫视
+http://27.10.127.139:8000/udp/225.0.4.203:7980
+#EXTINF:-1 group-title="地方卫视",山东卫视
+http://27.10.127.139:8000/udp/225.0.4.199:7980
+#EXTINF:-1 group-title="地方卫视",广东卫视
+http://27.10.127.139:8000/udp/225.0.4.84:7980
+#EXTINF:-1 group-title="地方卫视",重庆卫视
+http://27.10.127.139:8000/udp/225.0.4.187:7980
+#EXTINF:-1 group-title="地方卫视",河北卫视
+http://27.10.127.139:8000/udp/225.0.4.174:7980
+#EXTINF:-1 group-title="地方卫视",贵州卫视
+http://27.10.127.139:8000/udp/225.0.4.175:7980
+#EXTINF:-1 group-title="地方卫视",北京卫视
+http://27.10.127.139:8000/udp/225.0.4.78:7980
+#EXTINF:-1 group-title="地方卫视",黑龙江卫视
+http://27.10.127.139:8000/udp/225.0.4.201:7980
+#EXTINF:-1 group-title="地方卫视",浙江卫视
+http://27.10.127.139:8000/udp/225.0.4.81:7980
+#EXTINF:-1 group-title="地方卫视",安徽卫视
+http://27.10.127.139:8000/udp/225.0.4.133:7980
+#EXTINF:-1 group-title="地方卫视",深圳卫视
+http://27.10.127.139:8000/udp/225.0.4.202:7980
+#EXTINF:-1 group-title="地方卫视",四川卫视
+http://27.10.127.139:8000/udp/225.0.4.204:7980
+#EXTINF:-1 group-title="地方卫视",东南卫视
+http://27.10.127.139:8000/udp/225.0.4.200:7980
+#EXTINF:-1 group-title="地方卫视",天津卫视
+http://27.10.127.139:8000/udp/225.0.4.82:7980
