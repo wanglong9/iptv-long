@@ -1,0 +1,61 @@
+Index: iptv/test/foodieguide.com/7bd78fe76777c661385e28672fe73a07.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/iptv/test/foodieguide.com/7bd78fe76777c661385e28672fe73a07.html b/iptv/test/foodieguide.com/7bd78fe76777c661385e28672fe73a07.html
+new file mode 100644
+--- /dev/null	(date 1708329995891)
++++ b/iptv/test/foodieguide.com/7bd78fe76777c661385e28672fe73a07.html	(date 1708329995891)
+@@ -0,0 +1,2 @@
++url:	https://foodieguide.com/iptvsearch/
++浙江卫视:	http://222.188.68.38:8888/newlive/live/hls/31/live.m3u8
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1708238940457)
++++ b/.gitignore	(date 1708238940457)
+@@ -0,0 +1,38 @@
++target/
++!.mvn/wrapper/maven-wrapper.jar
++!**/src/main/**/target/
++!**/src/test/**/target/
++
++### IntelliJ IDEA ###
++.idea/modules.xml
++.idea/jarRepositories.xml
++.idea/compiler.xml
++.idea/libraries/
++*.iws
++*.iml
++*.ipr
++
++### Eclipse ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++build/
++!**/src/main/**/build/
++!**/src/test/**/build/
++
++### VS Code ###
++.vscode/
++
++### Mac OS ###
++.DS_Store
+\ No newline at end of file

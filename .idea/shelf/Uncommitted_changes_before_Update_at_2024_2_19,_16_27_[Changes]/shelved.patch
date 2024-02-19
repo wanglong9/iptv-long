@@ -1,0 +1,9 @@
+Index: README.md
+===================================================================
+diff --git a/README.md b/README.md
+deleted file mode 100644
+--- a/README.md	(revision f1ff6dd00f6be1b7997f6413f886641de23585a7)
++++ /dev/null	(revision f1ff6dd00f6be1b7997f6413f886641de23585a7)
+@@ -1,1 +0,0 @@
+-# iptv-long
+\ No newline at end of file
