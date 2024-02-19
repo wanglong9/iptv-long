@@ -82,7 +82,7 @@ public class TvSpiderMain {
                         filePath = args[0];
                     }
                     PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(
-                            new FileOutputStream(filePath + "/iptv/iptv.m3u"),
+                            new FileOutputStream(filePath + "/iptv.m3u"),
                             StandardCharsets.UTF_8));
                     printWriter.println("#EXTM3U");
 
