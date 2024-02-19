@@ -1,4 +1,4 @@
-package org.tv.service.multicast_ip;
+package org.tv;
 
 import org.apache.commons.lang3.StringUtils;
 import org.tv.utils.CheckM3U8Link;

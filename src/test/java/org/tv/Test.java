@@ -1,7 +1,6 @@
 package org.tv;
 
 import org.tv.common.SpiderProperties;
-import org.tv.service.multicast_ip.FoodieguidePageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.model.HttpRequestBody;
