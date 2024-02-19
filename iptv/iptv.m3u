@@ -1,20 +1,4 @@
 #EXTM3U
-#EXTINF:-1 group-title="央视频道-",CCTV-1
-http://222.189.177.159:8123/rtp/239.49.1.1:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-2
-http://222.189.177.159:8123/rtp/239.49.1.2:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-3
-http://222.189.177.159:8123/rtp/239.49.1.3:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-4
-http://222.189.177.159:8123/rtp/239.49.1.4:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-5
-http://222.189.177.159:8123/rtp/239.49.1.5:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-6
-http://222.189.177.159:8123/rtp/239.49.1.6:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-7
-http://222.189.177.159:8123/rtp/239.49.1.254:6000
-#EXTINF:-1 group-title="央视频道-",CCTV-8
-http://222.189.177.159:8123/rtp/239.49.1.8:6000
 #EXTINF:-1 group-title="央视频道",CCTV10
 http://222.189.177.159:8123/rtp/239.49.1.10:6000
 #EXTINF:-1 group-title="央视频道",CCTV11
