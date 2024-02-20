@@ -31,12 +31,12 @@ public class TvSpiderMain {
     private static List<HostDomain> hostUrlArr = new ArrayList<>();
 
     static {
-//        HostDomain tonkiang = new HostDomain();
-//        tonkiang.setHost("tonkiang.us");
-//        tonkiang.setUrl("http://tonkiang.us/hoteliptv.php");
-//        tonkiang.setPhpUrl("http://tonkiang.us/9dlist2.php?s=%s&c=false");
-//        tonkiang.setReferer("http://tonkiang.us/hotellist.html?s=%s");
-//        hostUrlArr.add(tonkiang);
+        HostDomain tonkiang = new HostDomain();
+        tonkiang.setHost("tonkiang.us");
+        tonkiang.setUrl("http://tonkiang.us/hoteliptv.php");
+        tonkiang.setPhpUrl("http://tonkiang.us/9dlist2.php?s=%s&c=false");
+        tonkiang.setReferer("http://tonkiang.us/hotellist.html?s=%s");
+        hostUrlArr.add(tonkiang);
 
         HostDomain foodieguide = new HostDomain();
         foodieguide.setHost("foodieguide.com");
