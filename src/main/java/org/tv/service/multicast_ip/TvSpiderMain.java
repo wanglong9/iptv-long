@@ -11,6 +11,9 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ResultItemsCollectorPipeline;
+import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
+import us.codecraft.webmagic.scheduler.DuplicateRemovedScheduler;
+import us.codecraft.webmagic.scheduler.QueueScheduler;
 import us.codecraft.webmagic.utils.HttpConstant;
 
 import java.io.FileNotFoundException;
@@ -47,8 +50,10 @@ public class TvSpiderMain {
     }
 
     public static List<String> getMulticastAddress(HostDomain hostDomain, String location) {
+        DuplicateRemovedScheduler duplicateRemovedScheduler = new QueueScheduler()
+                .setDuplicateRemover(new BloomFilterDuplicateRemover(100000));
         List<String> result = new ArrayList<>();
-        int time = 5;
+        int time = 10;
         while (result.size() == 0 && time > 0) {
             time--;
             String hostUrl = hostDomain.getUrl();
@@ -60,6 +65,7 @@ public class TvSpiderMain {
             ResultItemsCollectorPipeline resultItemsCollectorPipeline = new ResultItemsCollectorPipeline();
             Spider.create(new MulticastIpPageProcessor(location))
                     .addRequest(request)
+                    .setScheduler(duplicateRemovedScheduler)
                     .addUrl(hostUrl)
                     .addPipeline(resultItemsCollectorPipeline)
                     .thread(1).run();
@@ -73,8 +79,8 @@ public class TvSpiderMain {
 
 
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
-        String filePath = ".";
-        String location = "浙江";
+        String filePath = "./iptv";
+        String location = "江苏";
         if (Objects.nonNull(args) && args.length > 0) {
             filePath = args[0];
             location = args[1];
@@ -126,8 +132,8 @@ public class TvSpiderMain {
                     }
                     printWriter.close();
                 }
-                logger.info("更新完毕");
             }
         }
+        logger.info("更新完毕");
     }
 }
