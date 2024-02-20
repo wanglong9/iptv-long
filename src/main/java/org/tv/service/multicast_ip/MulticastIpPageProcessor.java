@@ -42,6 +42,8 @@ public class MulticastIpPageProcessor implements PageProcessor {
             String location = page.getHtml().xpath("//div[@class='tables']//div[5]/i/text()").toString();
             if (StringUtils.isNotBlank(address) && location.contains(targetLocation)) {
                 page.putField(SpiderProperties.MULTICAST_IPS, address.trim());
+            } else {
+                page.setSkip(true);
             }
         } else {
 //            List<Selectable> nodes = page.getHtml().css("div.tables > div.result").nodes();

@@ -48,7 +48,9 @@ public class TvSpiderMain {
 
     public static List<String> getMulticastAddress(HostDomain hostDomain, String location) {
         List<String> result = new ArrayList<>();
-        while (result.size() == 0) {
+        int time = 5;
+        while (result.size() == 0 && time > 0) {
+            time--;
             String hostUrl = hostDomain.getUrl();
             String host = hostDomain.getHost();
             Request request = new Request(hostUrl);
@@ -86,7 +88,6 @@ public class TvSpiderMain {
                     String referer = String.format(hostUrl.getReferer(), address);
                     logger.info("flush m3u from url:{}", url);
 
-
                     PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(
                             new FileOutputStream(filePath + "/iptv.m3u"),
                             StandardCharsets.UTF_8));
@@ -116,6 +117,7 @@ public class TvSpiderMain {
                         totalCount += propertyValues.length;
                         Thread.sleep(5000);
                     }
+
                     if (successCount > totalCount * 0.3) {
                         // 搜索频道达到六成结束
                         printWriter.close();
