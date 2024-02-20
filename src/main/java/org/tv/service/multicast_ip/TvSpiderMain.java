@@ -31,12 +31,12 @@ public class TvSpiderMain {
     private static List<HostDomain> hostUrlArr = new ArrayList<>();
 
     static {
-        HostDomain tonkiang = new HostDomain();
-        tonkiang.setHost("tonkiang.us");
-        tonkiang.setUrl("http://tonkiang.us/hoteliptv.php");
-        tonkiang.setPhpUrl("http://tonkiang.us/9dlist2.php?s=%s&c=false");
-        tonkiang.setReferer("http://tonkiang.us/hotellist.html?s=%s");
-        hostUrlArr.add(tonkiang);
+//        HostDomain tonkiang = new HostDomain();
+//        tonkiang.setHost("tonkiang.us");
+//        tonkiang.setUrl("http://tonkiang.us/hoteliptv.php");
+//        tonkiang.setPhpUrl("http://tonkiang.us/9dlist2.php?s=%s&c=false");
+//        tonkiang.setReferer("http://tonkiang.us/hotellist.html?s=%s");
+//        hostUrlArr.add(tonkiang);
 
         HostDomain foodieguide = new HostDomain();
         foodieguide.setHost("foodieguide.com");
@@ -46,30 +46,39 @@ public class TvSpiderMain {
         hostUrlArr.add(foodieguide);
     }
 
-    public static List<String> getMulticastAddress(HostDomain hostDomain) {
-        String hostUrl = hostDomain.getUrl();
-        String host = hostDomain.getHost();
-        Request request = new Request(hostUrl);
-        request.setMethod(HttpConstant.Method.GET);
-        request.addHeader("Host", host);
-        request.addHeader("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8");
-        ResultItemsCollectorPipeline resultItemsCollectorPipeline = new ResultItemsCollectorPipeline();
-        Spider.create(new MulticastIpPageProcessor())
-                .addRequest(request)
-                .addUrl(hostUrl)
-                .addPipeline(resultItemsCollectorPipeline)
-                .thread(1).run();
-        List<ResultItems> collected = resultItemsCollectorPipeline.getCollected();
-        if (CollectionUtils.isNotEmpty(collected)) {
-            return collected.stream().map(c -> c.get(SpiderProperties.MULTICAST_IPS) + "").collect(Collectors.toList());
+    public static List<String> getMulticastAddress(HostDomain hostDomain, String location) {
+        List<String> result = new ArrayList<>();
+        while (result.size() == 0) {
+            String hostUrl = hostDomain.getUrl();
+            String host = hostDomain.getHost();
+            Request request = new Request(hostUrl);
+            request.setMethod(HttpConstant.Method.GET);
+            request.addHeader("Host", host);
+            request.addHeader("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8");
+            ResultItemsCollectorPipeline resultItemsCollectorPipeline = new ResultItemsCollectorPipeline();
+            Spider.create(new MulticastIpPageProcessor(location))
+                    .addRequest(request)
+                    .addUrl(hostUrl)
+                    .addPipeline(resultItemsCollectorPipeline)
+                    .thread(1).run();
+            List<ResultItems> collected = resultItemsCollectorPipeline.getCollected();
+            if (CollectionUtils.isNotEmpty(collected)) {
+                result = collected.stream().map(c -> c.get(SpiderProperties.MULTICAST_IPS) + "").collect(Collectors.toList());
+            }
         }
-        return null;
+        return result;
     }
 
 
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
+        String filePath = ".";
+        String location = "浙江";
+        if (Objects.nonNull(args) && args.length > 0) {
+            filePath = args[0];
+            location = args[1];
+        }
         for (HostDomain hostUrl : hostUrlArr) {
-            List<String> addressList = getMulticastAddress(hostUrl);
+            List<String> addressList = getMulticastAddress(hostUrl, location);
             if (CollectionUtils.isNotEmpty(addressList)) {
                 for (String address : addressList) {
                     String host = hostUrl.getHost();
@@ -77,10 +86,7 @@ public class TvSpiderMain {
                     String referer = String.format(hostUrl.getReferer(), address);
                     logger.info("flush m3u from url:{}", url);
 
-                    String filePath = ".";
-                    if (Objects.nonNull(args) && args.length > 0) {
-                        filePath = args[0];
-                    }
+
                     PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(
                             new FileOutputStream(filePath + "/iptv.m3u"),
                             StandardCharsets.UTF_8));
@@ -100,7 +106,7 @@ public class TvSpiderMain {
                         String[] propertyValues = properties.get(key).toString().split(",");
                         M3UFilePipeline m3UFilePipeline = new M3UFilePipeline(printWriter);
                         m3UFilePipeline.setGroupName(key.toString());
-                        Spider.create(new MulticastIpPageProcessor(propertyValues))
+                        Spider.create(new MulticastIpPageProcessor(location, propertyValues))
                                 .addRequest(request)
                                 .addUrl(url)
                                 .addPipeline(m3UFilePipeline)

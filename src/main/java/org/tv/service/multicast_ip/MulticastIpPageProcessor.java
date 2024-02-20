@@ -16,8 +16,10 @@ import java.util.stream.Collectors;
 public class MulticastIpPageProcessor implements PageProcessor {
 
     private String[] keys;
+    private String targetLocation = "浙江";
 
-    public MulticastIpPageProcessor(String... keys) {
+    public MulticastIpPageProcessor(String location, String... keys) {
+        this.targetLocation = location;
         this.keys = keys;
     }
 
@@ -25,7 +27,7 @@ public class MulticastIpPageProcessor implements PageProcessor {
     public void process(Page page) {
         String url = page.getUrl().toString();
         if (url.endsWith("hoteliptv.php")) {
-            String expression = "/html/body/div[3]/div[2]/div/div[2]//a/@href";
+            String expression = "//div[@class='box'][2]//a/@href";
             List<Selectable> nodes = page.getHtml().xpath(expression).nodes();
             if (CollectionUtils.isNotEmpty(nodes)) {
                 List<String> multicastIps = nodes.stream().map(Selectable::toString).collect(Collectors.toList());
@@ -35,13 +37,15 @@ public class MulticastIpPageProcessor implements PageProcessor {
                 }
             }
         } else if (url.contains("hoteliptv.php?s")) {  // hoteliptv.php?s=ip 解析 multicastIpList
-            Selectable css = page.getHtml().css("div.tables > div.result > div.channel");
-            String address = css.xpath("//a/b/text()").toString();
-            if (StringUtils.isNotBlank(address)) {
+//            String address = page.getHtml().xpath("//div[@class='tables']//div[@class='channel']//a/b/text()").toString();
+            String address = page.getHtml().xpath("//div[@class='tables']//div[@class='channel']//a/b/text()").toString();
+            String location = page.getHtml().xpath("//div[@class='tables']//div[5]/i/text()").toString();
+            if (StringUtils.isNotBlank(address) && location.contains(targetLocation)) {
                 page.putField(SpiderProperties.MULTICAST_IPS, address.trim());
             }
         } else {
-            List<Selectable> nodes = page.getHtml().css("div.tables > div.result").nodes();
+//            List<Selectable> nodes = page.getHtml().css("div.tables > div.result").nodes();
+            List<Selectable> nodes = page.getHtml().xpath("//div[@class='tables']//div[@class='result']").nodes();
             Map<String, String> m3u8Map = getM3u8Map(nodes);
             for (String key : keys) {
                 addPage(page, m3u8Map, key);
@@ -69,11 +73,9 @@ public class MulticastIpPageProcessor implements PageProcessor {
     }
 
     private Site site = Site.me()
-            .setRetryTimes(3)
+            .setRetryTimes(0)
             .setTimeOut(10000)
             .setSleepTime(3000);
-
-
 
     @Override
     public Site getSite() {
