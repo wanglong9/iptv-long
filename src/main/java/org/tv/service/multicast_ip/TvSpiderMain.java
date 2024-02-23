@@ -71,7 +71,7 @@ public class TvSpiderMain {
                     .thread(1).run();
             List<ResultItems> collected = resultItemsCollectorPipeline.getCollected();
             if (CollectionUtils.isNotEmpty(collected)) {
-                result = collected.stream().map(c -> c.get(SpiderProperties.MULTICAST_IPS) + "").collect(Collectors.toList());
+                collected.forEach(c -> c.getAll().values().forEach(v -> result.add(v.toString())));
             }
         }
         return result;
@@ -80,7 +80,7 @@ public class TvSpiderMain {
 
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         String filePath = "./iptv";
-        String location = "江苏";
+        String location = "浙江|江苏|上海";
         if (Objects.nonNull(args) && args.length > 0) {
             filePath = args[0];
             location = args[1];
