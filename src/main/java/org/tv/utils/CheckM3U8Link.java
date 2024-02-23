@@ -17,7 +17,7 @@ public class CheckM3U8Link {
 
     // 使用一个静态实例来复用HttpClient和其内部的连接池
     private static final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2) // 默认使用HTTP/2
+            .version(HttpClient.Version.HTTP_1_1) // 默认使用HTTP/2
             .followRedirects(HttpClient.Redirect.NORMAL)
             .connectTimeout(Duration.ofSeconds(SpiderProperties.M3U8_TIMEOUT_MILLISECONDS)) // 设置连接超时时间
             .build();
