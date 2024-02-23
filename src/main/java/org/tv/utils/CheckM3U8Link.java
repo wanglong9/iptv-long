@@ -31,14 +31,7 @@ public class CheckM3U8Link {
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             // 检查 HTTP 响应代码和内容类型
-            if (response.statusCode() == HttpURLConnection.HTTP_OK
-//                    &&
-//                    (contentType.contains("application/vnd.apple.mpegurl")
-//                            || contentType.contains("audio/mpegurl")
-//                            || contentType.contains("application/octet-stream")
-//                    )
-            ){
-                logger.info("get success url :{}", m3u8Url);
+            if (response.statusCode() == HttpURLConnection.HTTP_OK){
                 return true;
             }
         } catch (Exception e) {

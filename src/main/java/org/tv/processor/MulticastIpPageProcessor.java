@@ -18,11 +18,9 @@ import java.util.stream.Collectors;
 public class MulticastIpPageProcessor implements PageProcessor {
 
     private String[] keys;
-    //    private String targetLocation = "浙江";
     private Pattern pattern;
 
     public MulticastIpPageProcessor(String location, String... keys) {
-//        this.targetLocation = location;
         this.pattern = Pattern.compile(location);
         this.keys = keys;
     }
@@ -40,7 +38,7 @@ public class MulticastIpPageProcessor implements PageProcessor {
                     page.setSkip(true);
                 }
             }
-        } else if (url.contains("hoteliptv.php?s")) {  // hoteliptv.php?s=ip 解析 multicastIpList
+        } else if (url.contains("hoteliptv.php?s")) {
             List<Selectable> addressList = page.getHtml().xpath("//div[@class='tables']//div[@class='channel']//a/b/text()").nodes();
             List<Selectable> locationList = page.getHtml().xpath("//div[@class='tables']//div[5]/i/text()").nodes();
             if (CollectionUtils.isNotEmpty(addressList)) {
@@ -57,7 +55,6 @@ public class MulticastIpPageProcessor implements PageProcessor {
                 page.setSkip(true);
             }
         } else {
-//            List<Selectable> nodes = page.getHtml().css("div.tables > div.result").nodes();
             List<Selectable> nodes = page.getHtml().xpath("//div[@class='tables']//div[@class='result']").nodes();
             Map<String, String> m3u8Map = getM3u8Map(nodes);
             for (String key : keys) {
@@ -88,7 +85,7 @@ public class MulticastIpPageProcessor implements PageProcessor {
     private Site site = Site.me()
             .setRetryTimes(0)
             .setTimeOut(10000)
-            .setSleepTime(3000);
+            .setSleepTime(1000);
 
     @Override
     public Site getSite() {
