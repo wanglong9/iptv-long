@@ -44,8 +44,9 @@ public class FoodieguidePageProcessor implements PageProcessor {
         Map<String, String> m3u8Map = new HashMap<>();
         for (Selectable n : nodes) {
             String name = n.xpath("//div[@class='channel']/a/div/text()").toString();
+            String desc = n.xpath("//div[@class='result']/div/i/text()").toString();
             String m3u8 = n.xpath("//div[@class='m3u8']/table/tbody").regex("<td style=\\\"padding-left: 6px;\\\">(.*?)</td>", 1).toString();
-            if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(m3u8)) {
+            if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(m3u8) && StringUtils.isNotBlank(desc) && desc.contains("1920") && desc.contains("1080")) {
                 if (CheckM3U8Link.isM3U8LinkValid(m3u8)) {
                     m3u8Map.put(name.trim().toUpperCase(), m3u8.trim());
                     break;
@@ -54,6 +55,11 @@ public class FoodieguidePageProcessor implements PageProcessor {
         }
         return m3u8Map;
     }
+
+//    public static void main(String[] args) {
+//        String desc="02-22-2024 Shandong checked •1920x1080 • Faster";
+//        System.out.println(desc.contains("1920") && desc.contains("1080"));
+//    }
 
     @Override
     public Site getSite() {

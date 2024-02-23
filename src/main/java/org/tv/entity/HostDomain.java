@@ -1,4 +1,4 @@
-package org.tv.service.multicast_ip.entity;
+package org.tv.entity;
 
 import java.io.Serializable;
 

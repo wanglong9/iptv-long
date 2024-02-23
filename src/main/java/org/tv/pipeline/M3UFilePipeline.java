@@ -1,7 +1,8 @@
-package org.tv.common;
+package org.tv.pipeline;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tv.common.SpiderProperties;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.FilePipeline;

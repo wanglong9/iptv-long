@@ -1,12 +1,12 @@
-package org.tv.service.multicast_ip;
+package org.tv.main;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tv.common.M3UFilePipeline;
-import org.tv.common.SpiderProperties;
-import org.tv.service.multicast_ip.entity.HostDomain;
+import org.tv.pipeline.M3UFilePipeline;
+import org.tv.processor.MulticastIpPageProcessor;
+import org.tv.entity.HostDomain;
 import org.tv.utils.PropertiesUtils;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.ResultItems;
@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class TvSpiderMain {
     private static Logger logger = LoggerFactory.getLogger(TvSpiderMain.class);
@@ -82,7 +81,7 @@ public class TvSpiderMain {
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         String filePath = "./iptv";
         String location = "浙江|江苏|上海";
-        if (Objects.nonNull(args)) {
+        if (Objects.nonNull(args) && args.length>0) {
             if (StringUtils.isNotBlank(args[0])) {
                 filePath = args[0];
             }

@@ -13,7 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <webmagic.version>0.10.0</webmagic.version>
-        <mainClass>org.tv.service.multicast_ip.TvSpiderMain</mainClass>
+        <mainClass>org.tv.main.TvSpiderMain</mainClass>
     </properties>
 
     <dependencies>

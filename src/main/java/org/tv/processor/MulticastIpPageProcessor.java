@@ -1,8 +1,9 @@
-package org.tv.service.multicast_ip;
+package org.tv.processor;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.tv.common.SpiderProperties;
+import org.tv.utils.CheckM3U8Link;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -67,7 +68,7 @@ public class MulticastIpPageProcessor implements PageProcessor {
 
     private void addPage(Page page, Map<String, String> m3u8Map, String key) {
         String m3u8 = m3u8Map.get(key.toUpperCase());
-        if (StringUtils.isNotBlank(m3u8)) {
+        if (StringUtils.isNotBlank(m3u8) && CheckM3U8Link.isM3U8LinkValid(m3u8)) {
             page.putField(key.toUpperCase(), m3u8);
         }
     }

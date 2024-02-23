@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Test {
     public static void main(String[] args) {
-        String searchKey = "浙江卫视";
+        String searchKey = "東森電影";
 
         Request request = new Request("https://foodieguide.com/iptvsearch/");
         request.setMethod(HttpConstant.Method.POST);
