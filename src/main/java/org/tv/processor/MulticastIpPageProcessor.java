@@ -65,7 +65,7 @@ public class MulticastIpPageProcessor implements PageProcessor {
 
     private void addPage(Page page, Map<String, String> m3u8Map, String key) {
         String m3u8 = m3u8Map.get(key.toUpperCase());
-        if (StringUtils.isNotBlank(m3u8) && CheckM3U8Link.isM3U8LinkValid(m3u8)) {
+        if (StringUtils.isNotBlank(m3u8)) {
             page.putField(key.toUpperCase(), m3u8);
         }
     }
