@@ -54,7 +54,7 @@ public class TvSpiderMain {
                 .setDuplicateRemover(new BloomFilterDuplicateRemover(100000));
         List<String> result = new ArrayList<>();
         int time = 10;
-        while (result.size() == 0 && time > 0) {
+       do{
             time--;
             String hostUrl = hostDomain.getUrl();
             String host = hostDomain.getHost();
@@ -73,7 +73,7 @@ public class TvSpiderMain {
             if (CollectionUtils.isNotEmpty(collected)) {
                 collected.forEach(c -> c.getAll().values().forEach(v -> result.add(v.toString())));
             }
-        }
+        } while (result.size() == 0 && time > 0);
         return result;
     }
 
