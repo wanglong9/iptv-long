@@ -86,7 +86,7 @@ public class TvSpiderMain {
             if (StringUtils.isNotBlank(args[0])) {
                 filePath = args[0];
             }
-            if (StringUtils.isNotBlank(args[1])) {
+            if (args.length > 1 && StringUtils.isNotBlank(args[1])) {
                 location = args[1];
             }
         }
