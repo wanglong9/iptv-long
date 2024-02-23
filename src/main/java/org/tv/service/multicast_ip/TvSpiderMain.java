@@ -1,6 +1,7 @@
 package org.tv.service.multicast_ip;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tv.common.M3UFilePipeline;
@@ -81,9 +82,13 @@ public class TvSpiderMain {
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         String filePath = "./iptv";
         String location = "浙江|江苏|上海";
-        if (Objects.nonNull(args) && args.length > 0) {
-            filePath = args[0];
-            location = args[1];
+        if (Objects.nonNull(args)) {
+            if (StringUtils.isNotBlank(args[0])) {
+                filePath = args[0];
+            }
+            if (StringUtils.isNotBlank(args[1])) {
+                location = args[1];
+            }
         }
         for (HostDomain hostUrl : hostUrlArr) {
             List<String> addressList = getMulticastAddress(hostUrl, location);
